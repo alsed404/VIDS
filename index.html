@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر الهويات البصرية</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --white-blur: rgba(255, 255, 255, 0.2);
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: url('https://sunrisegraphics.org/wp-content/uploads/2024/05/SWISS-copy.webp') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar, footer {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .card {
+      background: var(--white-blur);
+      border: none;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.5s; }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn {
+      font-weight: bold;
+    }
+
+    .modal-backdrop.show {
+      opacity: 0.5;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      border-radius: 12px;
+      border: 1px solid white;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      animation: popupFade 0.4s ease;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid white;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 10px auto;
+      width: 80%;
+    }
+
+    .contact-btn i {
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes popupFade {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark shadow-sm justify-content-center">
+    <div class="container text-center">
+      <a class="navbar-brand mx-auto fs-3" href="#">متجر الهويات البصرية</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4">صمّم هويتك البصرية معنا</h1>
+      <p class="lead">اختر الباقة المناسبة لك وانطلق!</p>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <div class="card-body">
+            <img src="https://shadowdesigner.net/wp-content/webp-express/webp-images/uploads/2024/04/%D8%B4%D8%B9%D8%A7%D8%B1-%D8%B9%D9%8A%D8%A7%D8%AF%D8%A9-%D8%A7%D9%84%D8%A8%D8%A7-2-scaled.jpg.webp" alt="Broken Image">
+            <h5 class="card-title">الباقة العادية</h5>
+            <p class="card-text">تصميم بسيط لهويتك البصرية يشمل شعار وبطاقة عمل</p>
+            <button class="btn btn-outline-light w-100" onclick="showContact()">شراء</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <div class="card-body">
+            <img src="https://static-cse.canva.com/blob/2106912/logo.jpg" alt="Broken Image">
+            <h5 class="card-title">الباقة المتوسطة</h5>
+            <p class="card-text">تصميم احترافي يشمل شعار، بطاقة عمل، غلاف مواقع التواصل</p>
+            <button class="btn btn-outline-light w-100" onclick="showContact()">شراء</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <div class="card-body">
+            <img src="https://tasweqa.com/wp-content/uploads/2025/04/%D9%87%D9%88%D9%8A%D8%A9-%D8%A8%D8%B5%D8%B1%D9%8A%D8%A9-%D9%83%D8%A7%D9%85%D9%84%D8%A9.jpg" alt="broken Image">
+            <h5 class="card-title">الباقة العالية</h5>
+            <p class="card-text">تصميم متكامل شامل الهوية البصرية الكاملة ودليل استخدام الهوية.</p>
+            <button class="btn btn-outline-light w-100" onclick="showContact()">شراء</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title">التواصل للشراء</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>لشراء الخدمة الرجاء التواصل عبر أحد الحسابات التالية:</p>
+          <a href="https://t.me/ALSED404" class="btn btn-primary contact-btn" target="_blank">
+            <i class="bi bi-telegram"></i> Telegram
+          </a>
+          <a href="https://instagram.com/alsed_404" class="btn btn-danger contact-btn" target="_blank">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <a href="#" class="btn btn-success contact-btn" target="_blank">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <button class="btn btn-outline-light mt-3" data-bs-dismiss="modal">إغلاق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 متجر الهويات البصرية جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showContact() {
+      var contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+      contactModal.show();
+    }
+  </script>
+</body>
+</html>
 
